@@ -38,60 +38,61 @@ pswd=""
     
   }
 
-  // login(){
-  //  // alert("Login Clicked !!!")
+  //login - using event bindingn / two way binding
+  login(){
+   // alert("Login Clicked !!!")
 
-  //  //user entered acno n pswd
-  //   var acno=this.acno
-  //   var pswd=this.pswd
+   //user entered acno n pswd
+    var acno=this.acno
+    var pswd=this.pswd
     
-  //   let database=this.database
+    let database=this.database
     
-  //     if(acno in database){
+      if(acno in database){
 
-  //         if(pswd==database[acno]["password"]){
-  //             alert("Login Successful !!!!!")
-  //         }
+          if(pswd==database[acno]["password"]){
+              alert("Login Successful !!!!!")
+          }
 
-  //         else{
-  //           alert("Incorrect Password !!!!!")
-  //         }
+          else{
+            alert("Incorrect Password !!!!!")
+          }
 
-  //     }
+      }
 
-  //     else{
-  //       alert("User dosenot exist !!!!!")
-  //     }
+      else{
+        alert("User dosenot exist !!!!!")
+      }
       
-  // }
+  }
 
 
-  login(a:any,p:any){
-    // alert("Login Clicked !!!")
+  // login(a:any,p:any){
+  //   // alert("Login Clicked !!!")
     
-    //user entered acno n pswd
-     var acno=a.value
-     var pswd=p.value
+  //   //user entered acno n pswd
+  //    var acno=a.value
+  //    var pswd=p.value
      
-     let database=this.database
+  //    let database=this.database
      
-       if(acno in database){
+  //      if(acno in database){
  
-           if(pswd==database[acno]["password"]){
-               alert("Login Successful !!!!!")
-           }
+  //          if(pswd==database[acno]["password"]){
+  //              alert("Login Successful !!!!!")
+  //          }
  
-           else{
-             alert("Incorrect Password !!!!!")
-           }
+  //          else{
+  //            alert("Incorrect Password !!!!!")
+  //          }
  
-       }
+  //      }
        
-       else{
-         alert("User dosenot exist !!!!!")
-       }
+  //      else{
+  //        alert("User dosenot exist !!!!!")
+  //      }
        
-   }
+  //  }
 
   
 }
