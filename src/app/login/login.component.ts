@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnyForUntypedForms } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -13,15 +14,9 @@ aim="Your Perfect Banking Partner"
 accNum="Account Number Please!!!"
 acno=""
 pswd=""
-  // Database
+  
 
-  database:any={
-    1000:{acno:1000,uname:"Niya",password:1000,balance:5000},
-    1001:{acno:1001,uname:"Niva",password:1001,balance:3000},
-    1002:{acno:1002,uname:"Miya",password:1002,balance:4000}
-  }
-
-  constructor(private router:Router) { }
+  constructor(private router:Router,private ds:DataService) { }
 
   ngOnInit(): void {
   }
@@ -50,55 +45,11 @@ pswd=""
     var acno=this.acno
     var pswd=this.pswd
     
-    let database=this.database
-    
-      if(acno in database){
-
-          if(pswd==database[acno]["password"]){
-              alert("Login Successful !!!!!")
-
-              this.router.navigateByUrl("dashboard")
-          }
-
-          else{
-            alert("Incorrect Password !!!!!")
-          }
-
-      }
-
-      else{
-        alert("User dosenot exist !!!!!")
-      }
-      
+    const result=this.ds.login(acno,pswd)
+    if(result){
+      alert("Login Successful !!!")
+      this.router.navigateByUrl("dashboard")
+    }
   }
 
-
-  // login(a:any,p:any){
-  //   // alert("Login Clicked !!!")
-    
-  //   //user entered acno n pswd
-  //    var acno=a.value
-  //    var pswd=p.value
-     
-  //    let database=this.database
-     
-  //      if(acno in database){
- 
-  //          if(pswd==database[acno]["password"]){
-  //              alert("Login Successful !!!!!")
-  //          }
- 
-  //          else{
-  //            alert("Incorrect Password !!!!!")
-  //          }
- 
-  //      }
-       
-  //      else{
-  //        alert("User dosenot exist !!!!!")
-  //      }
-       
-  //  }
-
-  
 }
