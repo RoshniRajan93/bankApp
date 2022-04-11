@@ -38,51 +38,71 @@ export class DataService {
 
 //login
   login(acno:any,pswd:any){
- 
     //user entered acno n pswd
+    let database=this.database
+    if(acno in database){
+      if(pswd==database[acno]["password"]){
+        // already exist
+        return true
+      }
+      else{
+        alert("Incorrect Password !!!!!")
+        return false
+      }
+    }
+    else{
+      alert("User dosenot exist !!!!!")
+      return false
+    }   
+  }
 
-     let database=this.database
-     
-       if(acno in database){
- 
-           if(pswd==database[acno]["password"]){
-               // already exist
-               return true
-           }
- 
-           else{
-             alert("Incorrect Password !!!!!")
-             return false
-           }
- 
-       }
- 
-       else{
-         alert("User dosenot exist !!!!!")
-         return false
-       }
-       
-   }
 
-   deposit(acno:any,pswd:any,amnt:any){
+  deposit(acno:any,pswd:any,amnt:any){
 
-     var amount=parseInt(amnt)
-     let database=this.database
+    var amount=parseInt(amnt)
+    let database=this.database
 
-     if(acno in database){
-        if(pswd==database[acno]["password"]){
-            database[acno]["balance"]+=amount
-            return database[acno]["balance"]
+    if(acno in database){
+      if(pswd==database[acno]["password"]){
+        database[acno]["balance"]+=amount
+        return database[acno]["balance"]
+      }
+      else{
+        alert("Incorrect password!!!")
+        return false
+      }
+    }
+    else{
+      alert("User dosenot exist!!!")
+      return false
+    }
+  }
+
+
+  withdraw(acno:any,pswd:any,amnt:any){
+
+    var amount=parseInt(amnt)
+    let database=this.database
+
+    if(acno in database){
+      if(pswd==database[acno]["password"]){
+        if(database[acno]["balance"]>amount){
+          database[acno]["balance"]-=amount
+          return database[acno]["balance"]
         }
         else{
-          alert("Incorrect password!!!")
+          alert("Insufficient balance!!!")
           return false
         }
-     }
-     else{
-       alert("User dosenot exist!!!")
-       return false
-     }
-   }
-
+      }
+      else{
+        alert("Incorrect password")
+        return false
+      }
+    }
+    else{
+      alert("User dosenot exist!!!")
+      return false
+    }
+  }
 }
