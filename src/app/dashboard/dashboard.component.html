@@ -29,7 +29,7 @@
                               <span class="input-group-text"><i class="fas fa-user"></i></span>
                           </div>
            
-                          <input type="text" name="pswd" formControlName="pswd" class="form-control" placeholder="Password" id="login_pswd" required> 
+                          <input type="password" name="pswd" formControlName="pswd" class="form-control" placeholder="Password" id="login_pswd" required> 
                       </div>
                       <div *ngIf="this.depositForm.get('pswd')?.touched&&this.depositForm.get('pswd')?.errors" style="color: red;">Invalid Password</div>
                       <div class="input-group form-group">
@@ -73,7 +73,7 @@
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
          
-                        <input type="text" name="pswd1" formControlName="pswd1" class="form-control" placeholder="Password" id="login_pswd1" required> 
+                        <input type="password" name="pswd1" formControlName="pswd1" class="form-control" placeholder="Password" id="login_pswd1" required> 
                     </div>
                     <div *ngIf="this.withdrawForm.get('pswd1')?.touched&&this.withdrawForm.get('pswd1')?.errors" style="color: red;">Invalid Account Number</div>
                     <div class="input-group form-group">
