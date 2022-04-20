@@ -11,6 +11,7 @@ import { DataService } from '../services/data.service';
 export class DashboardComponent implements OnInit {
 
   user:any
+  acno:any
 
   depositForm=this.fb.group({
     acno:['',[Validators.required,Validators.pattern('[0-9]*')]],
@@ -24,8 +25,11 @@ export class DashboardComponent implements OnInit {
     amount1:['',[Validators.required,Validators.pattern('[0-9]*')]]
   })
 
+  loginDate:any
+
   constructor( private ds:DataService,private fb:FormBuilder,private router:Router) { 
     this.user=this.ds.currentUser
+    this.loginDate=new Date()
   }
 
   ngOnInit(): void {
@@ -64,6 +68,11 @@ export class DashboardComponent implements OnInit {
       }
     }
     
+  }
+
+  //deleteFromParent()
+  deleteFromParent(){
+    this.acno=JSON.parse(localStorage.getItem("currentAcno")||'')
   }
 
   logOut(){

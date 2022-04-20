@@ -7,7 +7,12 @@
   </nav>
   
   <h2 style="color: white;">Welcome {{user}}</h2>
+  <h4 style="color: white;">Login details are:{{loginDate|date:'fullDate'|uppercase}}</h4>    
   <a routerLink="/transaction">Transaction History</a>
+  <button (click)="deleteFromParent()" class="btn btn-danger" style="float: right;">DELETE</button>
+  <hr>
+  <app-delete-confirm [item]=acno></app-delete-confirm>
+
   <div class="container col-md-12 mt-0">
       <div class="d-flex justify-content-center h-100">
           <div class="card">
