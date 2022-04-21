@@ -11,13 +11,14 @@
   <a routerLink="/transaction">Transaction History</a>
   <button (click)="deleteFromParent()" class="btn btn-danger" style="float: right;">DELETE</button>
   <hr>
-  <app-delete-confirm [item]=acno></app-delete-confirm>
+  <!-- child selector -->
+  <app-delete-confirm (onDelete)="onDelete($event)" (onCancel)="onCancel()" [item]=acno></app-delete-confirm>
 
-  <div class="container col-md-12 mt-0">
+  <div class="container col-md-12 mt-0" [ngClass]="acno? 'style1':'' ">
       <div class="d-flex justify-content-center h-100">
           <div class="card">
               <div class="card-header">
-                  <h3 class="text-center">Deposit Form</h3>
+                  <h3 appHighlights class="text-center">Deposit Form</h3>
                   
               </div>
               <div class="card-body">
@@ -57,11 +58,11 @@
       </div>
   </div>
 
-  <div class="container col-md-12 mt-0">
+  <div class="container col-md-12 mt-0" [ngClass]="acno? 'style1':'' ">
     <div class="d-flex justify-content-center h-100">
         <div class="card">
             <div class="card-header">
-                <h3 class="text-center">Withdraw Form</h3>
+                <h3 appHighlights class="text-center">Withdraw Form</h3>
                 
             </div>
             <div class="card-body">

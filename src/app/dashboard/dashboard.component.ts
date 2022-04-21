@@ -81,4 +81,14 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl("")
   }
 
+  //onCancel()
+  onCancel(){
+    this.acno=""
+  }
+
+  //onDelete()
+  onDelete(event:any){
+    alert("Delete account"+event)
+  }
+
 }
