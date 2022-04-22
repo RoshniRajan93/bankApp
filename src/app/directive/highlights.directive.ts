@@ -7,7 +7,7 @@ export class HighlightsDirective {
 
   constructor(private el:ElementRef) { 
     console.log(el);
-    el.nativeElement.style.backgroundColor="yellow"
+    el.nativeElement.style.backgroundColor="#FFC312"
     el.nativeElement.style.color="black"
   }
 
