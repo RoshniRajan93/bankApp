@@ -25,37 +25,29 @@ accNum="Account Number Please!!!"
   ngOnInit(): void {
   }
 
-  // acnoChange(event:any){
-  //   console.log(event);
-  //   this.acno=event.target.value
-  //   console.log(this.acno);
-    
-  // }
-
-  // pswdChange(event:any){
-  //   this.pswd=event.target.value
-  //   console.log(this.pswd);
-    
-  // }
-
-
-  //login - using event bindingn / two way binding
-
   login(){
-
-   // alert("Login Clicked !!!")
-
-   //user entered acno n pswd
+   // user entered acno n pswd
     var acno=this.loginForm.value.acno
     var pswd=this.loginForm.value.pswd
     if(this.loginForm.valid){
-      const result=this.ds.login(acno,pswd)
-    if(result){
-      alert("Login Successful !!!")
-      this.router.navigateByUrl("dashboard")
+      // call login in dataService-asynchronous
+      this.ds.login(acno,pswd)
+      .subscribe((result:any)=>{
+        if(result){
+          localStorage.setItem('currentAcno',JSON.stringify(result.currentAcno))
+          localStorage.setItem('currentUser',JSON.stringify(result.currentUser))
+          localStorage.setItem("token",JSON.stringify(result.token))
+          alert(result.message)
+          this.router.navigateByUrl("dashboard")
+        }
+      },
+      (result)=>{
+        alert(result.error.message)
+      })
     }
+    else{
+      alert("Invalid Form!!!!")
     }
-
   }
 
 }
